@@ -192,7 +192,7 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	{
 		if(variable_b != columnas-1 && bpm != -20)
 		{
-			if(((matriz[variable_a][variable_b+1] == 2) && (matriz[variable_a][variable_b] == 4)) == false)
+			if((matriz[variable_a][variable_b+1] == 2 && matriz[variable_a][variable_b] == 4) == false)
 				variable_b++;
 		}
 		cambiarMatriz();
@@ -202,7 +202,7 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	{
 		if(variable_b != 0 && bpm != -20)
 		{
-			if(((matriz[variable_a][variable_b-1] == 2) && (matriz[variable_a][variable_b] == 4)) == false)
+			if((matriz[variable_a][variable_b-1] == 2 && matriz[variable_a][variable_b] == 4) == false)
 				variable_b--;
 		}
 		cambiarMatriz();
@@ -212,7 +212,7 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	{
 		if(variable_a != 0 && bpm != -20)
 		{
-			if(((matriz[variable_a-1][variable_b] == 2) && (matriz[variable_a][variable_b] == 4)) == false)
+			if((matriz[variable_a-1][variable_b] == 2 && matriz[variable_a][variable_b] == 4) == false)
 				variable_a--;
 		}
 		cambiarMatriz();
@@ -222,7 +222,7 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	{
 		if(variable_a!=filas-1 && bpm != -20)
 		{
-			if(((matriz[variable_a+1][variable_b] == 2) && (matriz[variable_a][variable_b] == 4)) == false)
+			if((matriz[variable_a+1][variable_b] == 2 && matriz[variable_a][variable_b] == 4) == false)
 				variable_a++;
 		}
 		cambiarMatriz();

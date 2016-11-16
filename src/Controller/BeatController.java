@@ -22,7 +22,7 @@ public class BeatController implements ControllerInterface {
 			view.disableStopMenuItem();
 			view.enableStartMenuItem();
 		}
-		else //Cuando se permite el cambio de modelo en tiempo de ejecucion, la vista tiene un nuevo menu
+		else
 		{
 			exchangeView = new ExchangeDJView(this, model);
 			exchangeView.createView();
@@ -73,12 +73,12 @@ public class BeatController implements ControllerInterface {
 	public void decreaseBPM() {
         int bpm = model.getBPM();
         
-        if(bpm-1 >= 0)	//Se agregó para corregir el bug que permitía setear frecuencias negativas.
+        if(bpm-1 >= 0)	
         model.setBPM(bpm - 1);
   	}
   
  	public void setBPM(int bpm) {
- 		if(bpm>=0)	//Se agregó para corregir el bug que permitía setear frecuencias negativas.
+ 		if(bpm>=0)	
 		model.setBPM(bpm);
 	}
 

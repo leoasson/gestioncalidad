@@ -42,6 +42,7 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 			}
 			catch(NullPointerException e)
 			{
+				e.printStackTrace();
 			};
 
 			try
@@ -51,6 +52,7 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 			}
 			catch(Exception e)
 			{
+				e.printStackTrace();
 			};
 			
 			if(contador == 0)

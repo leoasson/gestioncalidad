@@ -49,8 +49,8 @@ public class SystemTest extends AssertJSwingTestngTestCase{
 	public void setUpBridgeCrane()
 	{
 		/*
-		 * Se mueve la grua hasta una posición donde hay una caja, se la toma, se la mueve hasta la posición
-		 * inicial de la grúa y se la suelta en ese punto.
+		 * Se mueve la grua hasta una posicion donde hay una caja, se la toma, se la mueve hasta la posicion
+		 * inicial de la grua y se la suelta en ese punto.
 		 */
 		FrameFixture controllerWindow = findFrame(new GenericTypeMatcher<JFrame>(JFrame.class) {
 
@@ -62,7 +62,7 @@ public class SystemTest extends AssertJSwingTestngTestCase{
 		}).using(robot());
 		
 		JTextComponentFixture enterBPM = controllerWindow.textBox();
-		enterBPM.setText("1234"); // Seteamos contraseña 1234
+		enterBPM.setText("1234"); // Seteamos contrasena 1234
 		
 		
 		JButtonFixture buttonleft = controllerWindow.button(new GenericTypeMatcher<JButton>(JButton.class) {
@@ -150,7 +150,7 @@ public class SystemTest extends AssertJSwingTestngTestCase{
 		
 		/*
 		 * Se crea la ventana y se busca un panel de color rojo (un panel es rojo
-		 * cuando la grua está por encima de una caja).
+		 * cuando la grua esta por encima de una caja).
 		 */
 		JPanelFixture panel = bridgeWindow.panel(new GenericTypeMatcher<JPanel>(JPanel.class) {
 
@@ -162,7 +162,7 @@ public class SystemTest extends AssertJSwingTestngTestCase{
 		
 		System.out.println(panel.toString());
 		/*
-		 * Si se encontró un panel rojo, significa que la caja fue movida correctamente.
+		 * Si se encontro un panel rojo, significa que la caja fue movida correctamente.
 		 */
 		assert(panel != null);
 		robot().cleanUp();

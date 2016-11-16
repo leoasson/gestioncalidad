@@ -11,11 +11,11 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	
 	ArrayList<BeatObserver> beatObservers = new ArrayList<BeatObserver>();
 	ArrayList<BPMObserver> bpmObservers = new ArrayList<BPMObserver>();
-	ArrayList<MatrizObserver> matrizObservers= new ArrayList<MatrizObserver>();
+	ArrayList<MatrizObserver> matrizObservers = new ArrayList<MatrizObserver>();
 	int bpm = -10;
 	int [][] matriz;
-	int filas=8;
-	int columnas=8;
+	int filas = 8;
+	int columnas = 8;
 	int variable_a;
 	int variable_b;
 	int contador = 10;
@@ -25,14 +25,14 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	{
 		matriz = new int [filas][columnas];
 		inicializarMatriz();
-		thread =new Thread (this);
+		thread = new Thread(this);
 		thread.start();
 	}
 
 	public void run()
 	{
 
-		for(;;)
+		for( ; ; )
 		{
 			try
 			{
@@ -40,20 +40,24 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 				notifyMatrizObserver();
 				
 			}
-			catch(NullPointerException e){};
+			catch(NullPointerException e)
+			{
+			};
 
 			try
 			{
 				Thread.sleep(50);
 				contador--;
 			}
-			catch(Exception e){};
+			catch(Exception e)
+			{
+			};
 			
 			if(contador == 0)
 			{
 				if(bpm == -20)
 				 {
-						notifyBeatObservers();
+					notifyBeatObservers();
 				 }
 				contador = 10;
 			}
@@ -76,15 +80,19 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		beatObservers.add(o);
 	}
 
-	public void removeObserver(BeatObserver o) {
+	public void removeObserver(BeatObserver o)
+	{
 		int i = beatObservers.indexOf(o);
-		if (i >= 0) {
+		if (i >= 0) 
+		{
 			beatObservers.remove(i);
 		}
 	}
 
-	public void notifyBeatObservers() {
-		for(int i = 0; i < beatObservers.size(); i++) {
+	public void notifyBeatObservers() 
+	{
+		for(int i = 0; i < beatObservers.size(); i++) 
+		{
 			BeatObserver observer = (BeatObserver)beatObservers.get(i);
 			observer.updateBeat();
 		}
@@ -101,7 +109,6 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		}
 	}
 	
-	
 	public void notifyBPMObservers() {
 		for(int i = 0; i < bpmObservers.size(); i++) {
 			BPMObserver observer = (BPMObserver)bpmObservers.get(i);
@@ -109,45 +116,41 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		}
 	}
 	
-	public void registerObserver(MatrizObserver o){
+	public void registerObserver(MatrizObserver o)
+	{
 		matrizObservers.add(o);
 	}
 	
-	public void removeObserver(MatrizObserver o){
+	public void removeObserver(MatrizObserver o)
+	{
 		int i = matrizObservers.indexOf(o);
 		if (i >= 0) {
 			matrizObservers.remove(i);
 		}
 	}
 
-	public void notifyMatrizObserver(){
-		for(int i = 0; i < matrizObservers.size(); i++) {
+	public void notifyMatrizObserver()
+	{
+		for(int i = 0; i < matrizObservers.size(); i++)
+		{
 			MatrizObserver observer = (MatrizObserver)matrizObservers.get(i);
 			observer.updateMatriz(filas,columnas);
-			
 		}
 	}
 	
 	public void inicializarMatriz()
 	{
 		Random random=new Random();
-		variable_a=3;//a=random.nextInt(8);
-		variable_b=3;//b=random.nextInt(8);
-		
-		//int c=random.nextInt(8);
-		//int d=random.nextInt(8);
-		//int e=random.nextInt(8);
-		//int f=random.nextInt(8);
-		//int g=random.nextInt(8);
-		//int h=random.nextInt(8);
+		variable_a = 3;//a=random.nextInt(8);
+		variable_b = 3;//b=random.nextInt(8);
 		
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
 			{
-				if (i==variable_a && j==variable_b)
-					matriz[i][j]=1;			
+				if (i == variable_a && j == variable_b)
+					matriz[i][j] = 1;			
 				else 
-					matriz[i][j]=0;				
+					matriz[i][j] = 0;				
 			}
 		
 		matriz[0][0] = 2;//matriz[c][d] = 2;
@@ -160,36 +163,36 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	
 	public void cambiarMatriz()
 	{
-		for (int i=0; i<filas; i++)
-			for (int j=0; j<columnas; j++)
+		for (int i = 0; i < filas; i++)
+			for (int j = 0; j < columnas; j++)
 			{
-				if (matriz[i][j]==3)
-					matriz[i][j]=2;	
-				else if (matriz[i][j]!=2 && matriz[i][j] != 4 && matriz[i][j] != 5 )
-					matriz[i][j]=0;		
-				else if(matriz[i][j] == 4 && (i!=variable_a || j!=variable_b))
+				if (matriz[i][j] == 3)
+					matriz[i][j] = 2;	
+				else if (matriz[i][j] != 2 && matriz[i][j] != 4 && matriz[i][j] != 5 )
+					matriz[i][j] = 0;		
+				else if(matriz[i][j] == 4 && (i != variable_a || j != variable_b))
 				{
 					matriz[i][j] = 0;
 					matriz[variable_a][variable_b] = 4;
 				}
 			}
 		
-		if(matriz[variable_a][variable_b]==0)
+		if(matriz[variable_a][variable_b] == 0)
 		matriz[variable_a][variable_b] = 1;
-		else if(matriz[variable_a][variable_b]==3)
+		else if(matriz[variable_a][variable_b] == 3)
 		matriz[variable_a][variable_b] = 2;
-		else if(matriz[variable_a][variable_b]!=4)
+		else if(matriz[variable_a][variable_b] != 4)
 		matriz[variable_a][variable_b] = 3;	
-		else if(matriz[variable_a][variable_b]==5)
+		else if(matriz[variable_a][variable_b] == 5)
 		matriz[variable_a][variable_b] = 3;	
 	}
 	
 	
 	public void irDerecha()
 	{
-		if(variable_b!=columnas-1 && bpm!=-20)
+		if(variable_b != columnas-1 && bpm != -20)
 		{
-			if(((matriz[variable_a][variable_b+1]==2)&&(matriz[variable_a][variable_b]==4)) == false)
+			if(((matriz[variable_a][variable_b+1] == 2) && (matriz[variable_a][variable_b] == 4)) == false)
 				variable_b++;
 		}
 		cambiarMatriz();
@@ -197,9 +200,9 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	
 	public void irIzquierda()
 	{
-		if(variable_b!=0 && bpm!=-20)
+		if(variable_b != 0 && bpm != -20)
 		{
-			if(((matriz[variable_a][variable_b-1]==2)&&(matriz[variable_a][variable_b]==4)) == false)
+			if(((matriz[variable_a][variable_b-1] == 2) && (matriz[variable_a][variable_b] == 4)) == false)
 				variable_b--;
 		}
 		cambiarMatriz();
@@ -207,9 +210,9 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	
 	public void irArriba()
 	{
-		if(variable_a!=0 && bpm!=-20)
+		if(variable_a != 0 && bpm != -20)
 		{
-			if(((matriz[variable_a-1][variable_b]==2)&&(matriz[variable_a][variable_b]==4)) == false)
+			if(((matriz[variable_a-1][variable_b] == 2) && (matriz[variable_a][variable_b] == 4)) == false)
 				variable_a--;
 		}
 		cambiarMatriz();
@@ -217,9 +220,9 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	
 	public void irAbajo()
 	{
-		if(variable_a!=filas-1 && bpm!=-20)
+		if(variable_a!=filas-1 && bpm != -20)
 		{
-			if(((matriz[variable_a+1][variable_b]==2)&&(matriz[variable_a][variable_b]==4)) == false)
+			if(((matriz[variable_a+1][variable_b] == 2) && (matriz[variable_a][variable_b] == 4)) == false)
 				variable_a++;
 		}
 		cambiarMatriz();
@@ -228,11 +231,11 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	public void setBPM(int i) 
 	{
 		bpm = i;
-		if(bpm==-20 && matriz[variable_a][variable_b]==3)
+		if(bpm == -20 && matriz[variable_a][variable_b] == 3)
 		{
 			matriz[variable_a][variable_b] = 4;
 		}
-		else if(bpm==-20 && matriz[variable_a][variable_b]==4) /////
+		else if(bpm == -20 && matriz[variable_a][variable_b] == 4)
 		{
 			matriz[variable_a][variable_b] = 5;
 		}

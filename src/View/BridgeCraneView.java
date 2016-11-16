@@ -25,12 +25,12 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
 		
     	super(controller,model);
     	verificar();
-    	if(type == 3)
+    	if (type == 3)
     	model.registerObserver((MatrizObserver)this);	
     }
     
     public void createView() {
-    	if(type == 1 || type ==2)
+    	if (type == 1 || type == 2)
     	{
     		super.createView();
     	}
@@ -60,16 +60,16 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
   
     public void createView2()
     {
-    	int filas=8;
-    	int columnas=8;
+    	int filas = 8;
+    	int columnas = 8;
     	
     	JFrame.setDefaultLookAndFeelDecorated(false);
     	posiciones = new JPanel[filas][columnas]; 
 		JPanel	deposito = new JPanel(new GridLayout(filas,columnas));
-		for(int i=0;i<filas;i++)
-    		for(int j=0;j<columnas;j++)
+		for (int i = 0;i < filas;i++)
+    		for (int j = 0;j < columnas;j++)
     		{
-    			posiciones[i][j]=new JPanel(new GridLayout(1,1));
+    			posiciones[i][j] = new JPanel(new GridLayout(1,1));
     			posiciones[i][j].setBackground(Color.GRAY);
     			deposito.add(posiciones[i][j]);
     		}
@@ -92,7 +92,7 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
     }
     
     public void createControls() {
-    	if(type == 1 || type==2)
+    	if (type == 1 || type == 2)
     	{
     		super.createControls();
     	}
@@ -194,11 +194,11 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
 		super.updateBPM();
 		if (model != null) {
 			int bpm = model.getBPM();
-			if(bpm == -10){
+			if (bpm == -10) {
 				if (bpmOutputLabel != null) {
         			bpmOutputLabel.setText("Disponible");
 				}				
-			} else if(bpm == -20){
+			} else if (bpm == -20) {
 				if (bpmOutputLabel != null) {
         			bpmOutputLabel.setText("Cargando");
 				}
@@ -206,15 +206,15 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
 		}
 	}
 	
-	public void updateMatriz(int filas, int columnas){
+	public void updateMatriz(int filas, int columnas) {
 		int [][] matriz = new int[filas][columnas];
 		BridgeCraneAdapter m = (BridgeCraneAdapter) model;
 		matriz = m.getMatriz();
 		
-		for (int i=0; i<filas; i++)
-			for (int j=0; j<columnas; j++)
+		for (int i = 0; i < filas; i++)
+			for (int j = 0; j < columnas; j++)
 			{
-				if (matriz[i][j]==1)
+				if (matriz[i][j] == 1)
 					{
 						posiciones[i][j].setBackground(new Color(255,255,255));
 						positionNumber.setText("Posicion de la grua: " + "Fila: " + i + ", Columna: " + j);
@@ -243,21 +243,21 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
 			BeatController b = (BeatController) controller;
 			type = 1;
 		}
-		catch(ClassCastException e){}
+		catch(ClassCastException e) { }
 	
 		try
 		{
 			HeartController h = (HeartController) controller;
 			type = 2;
 		}
-		catch(ClassCastException r) {}
+		catch(ClassCastException r) { }
 		
 		try
 		{
 			BridgeCraneController c = (BridgeCraneController) controller;
 			type = 3;
 		}
-		catch(ClassCastException t) {}
+		catch(ClassCastException t) { }
 		
 	}
 }

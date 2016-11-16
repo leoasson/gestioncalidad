@@ -70,7 +70,7 @@ public class BridgeCraneController implements ControllerInterface{
  		}	
  		else
  		{
- 			JOptionPane.showMessageDialog(null,"Contaseña incorrecta");
+ 			JOptionPane.showMessageDialog(null,"Contasena incorrecta");
  		}
  	}
 }

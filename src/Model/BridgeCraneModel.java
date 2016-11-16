@@ -18,7 +18,7 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	int columnas = 8;
 	int variable_a;
 	int variable_b;
-	int contador= 10;
+	int contador = 10;
 	Thread thread;
 
 	public BridgeCraneModel () 

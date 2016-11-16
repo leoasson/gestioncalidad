@@ -28,19 +28,19 @@ import org.assertj.swing.launcher.ApplicationLauncher;
 import static org.assertj.swing.finder.WindowFinder.findFrame;
 
 
-public class SystemTest extends AssertJSwingTestngTestCase{
-	
-	public SystemTest() {
+public class SystemTest extends AssertJSwingTestngTestCase
+{
+	public SystemTest() 
+	{
 		super();
 	}
 	
 	
-	protected void onSetUp() 
-	{
-	}
+	protected void onSetUp() {}
 	
 	@Before
-	public void BeforeTest(){
+	public void BeforeTest()
+	{
 		setUpRobot();
 		application(BridgeCraneTestDrive.class).start();
 	}
@@ -52,8 +52,8 @@ public class SystemTest extends AssertJSwingTestngTestCase{
 		 * Se mueve la grua hasta una posicion donde hay una caja, se la toma, se la mueve hasta la posicion
 		 * inicial de la grua y se la suelta en ese punto.
 		 */
-		FrameFixture controllerWindow = findFrame(new GenericTypeMatcher<JFrame>(JFrame.class) {
-
+		FrameFixture controllerWindow = findFrame(new GenericTypeMatcher<JFrame>(JFrame.class) 
+		{
 			@Override
 			protected boolean isMatching(JFrame component) 
 			{
@@ -63,7 +63,6 @@ public class SystemTest extends AssertJSwingTestngTestCase{
 		
 		JTextComponentFixture enterBPM = controllerWindow.textBox();
 		enterBPM.setText("1234"); // Seteamos contrasena 1234
-		
 		
 		JButtonFixture buttonleft = controllerWindow.button(new GenericTypeMatcher<JButton>(JButton.class) {
 
@@ -140,10 +139,11 @@ public class SystemTest extends AssertJSwingTestngTestCase{
 		buttonset.target().doClick(); 
 		sleep();
 		
-		FrameFixture bridgeWindow = findFrame(new GenericTypeMatcher<JFrame>(JFrame.class) {
-
+		FrameFixture bridgeWindow = findFrame(new GenericTypeMatcher<JFrame>(JFrame.class) 
+		{
 			@Override
-			protected boolean isMatching(JFrame component) {
+			protected boolean isMatching(JFrame component)
+			{
 				return "Deposito".equals(component.getTitle());
 			}
 		}).using(robot());
@@ -161,19 +161,19 @@ public class SystemTest extends AssertJSwingTestngTestCase{
 		});
 		
 		System.out.println(panel.toString());
-		/*
-		 * Si se encontro un panel rojo, significa que la caja fue movida correctamente.
-		 */
+		//Si se encontro un panel rojo, significa que la caja fue movida correctamente.
 		assert(panel != null);
-		robot().cleanUp();
-		
+		robot().cleanUp();	
 	}
 	
 	public void sleep()
 	{
-		try {
+		try 
+		{
 			Thread.sleep(500);
-		} catch (InterruptedException e) {
+		} 
+		catch (InterruptedException e) 
+		{
 			e.printStackTrace();
 		}
 	}

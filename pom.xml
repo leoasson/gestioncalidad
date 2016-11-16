@@ -40,6 +40,44 @@
   		<artifactId>assertj-swing-testng</artifactId>
       <version>3.4.0</version>
   	</dependency>
-
   </dependencies>
+  
+  <reporting>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>2.17</version>
+          <reportSets>
+            <reportSet>
+              <reports>
+                <report>checkstyle</report>
+              </reports>
+            </reportSet>
+          </reportSets>
+        </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.7</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.1</version>
+	<configuration>
+                <!-- findbugs:help -Ddetail=true  for outputDirectory:
+                     Location where generated html will be created. 
+                 -->
+                <outputDirectory>${project.build.directory}/findbugs</outputDirectory>
+
+                <xmlOutput>true</xmlOutput>
+                <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+                <xmlOutputDirectory>target/findbugs</xmlOutputDirectory>
+                <failOnError>false</failOnError>
+    	</configuration>
+      </plugin>
+      </plugins>
+</reporting>
+  
 </project>

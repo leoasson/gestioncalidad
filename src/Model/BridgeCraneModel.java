@@ -19,7 +19,6 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	int variable_a;
 	int variable_b;
 	int contador = 10;
-	int warning = 0;
 	Thread thread;
 
 	public BridgeCraneModel () 

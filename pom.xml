@@ -3,18 +3,8 @@
   <groupId>TPFinal-IngSW</groupId>
   <artifactId>TPFinal-IngSW</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <build>
-
-	  
+  <build>  
     <sourceDirectory>src</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>banderas</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
